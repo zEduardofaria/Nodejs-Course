@@ -7,11 +7,16 @@ const yargs = require('yargs');
 const notes = require('./notes.js');
 
 const argv = yargs.argv;
-var command = process.argv[2];
+var command = argv._[0];
 console.log('Command: ', command);
+console.log('argv: ', argv);
 
 if (command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    var note = notes.addNote(argv.title, argv.body);
+    console.log(
+        note ? 
+        `Note created. \n Title: ${argv.title} \n Body: ${argv.body}`
+         : 'Note title taken')
 } else if (command === 'list') {
     notes.getAll();    
 } else if (command === 'read') {
