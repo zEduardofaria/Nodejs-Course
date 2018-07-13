@@ -8,7 +8,7 @@ it('should add two numbers', () => {
 })
 
 it('should square a number', () => {
-  const res = utils.square(3)
+  const res = utils.square(2)
   if (res !== 4) {
     throw new Error(`Expected 4, but got ${res}`)
   }
