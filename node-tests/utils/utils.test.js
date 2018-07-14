@@ -1,15 +1,37 @@
+const expected = require('expect')
+
 const utils = require('./utils')
 
-it('should add two numbers', () => {
+it('Should add two numbers', () => {
   const res = utils.add(33, 11)
-  if (res !== 44) {
-    throw new Error(`Expected 44, but got ${res}`)
-  }
+
+  expected(res).toBe(44).toBeA('number')
 })
 
-it('should square a number', () => {
-  const res = utils.square(2)
-  if (res !== 4) {
-    throw new Error(`Expected 4, but got ${res}`)
-  }
+it('Should square a number', () => {
+  const res = utils.square(3)
+  
+  expected(res).toBe(9).toBeA('number')
+})
+
+it('Should expect some values', () => {
+  // expected({ name: 'Eduardo' }).toNotEqual({ name: 'Eduardo' })
+  // expected([1,2,3]).toExclude(4)
+  expected({
+    name: 'Eduardo',
+    age: 22,
+    location: 'Philadephia'
+  }).toInclude({
+    age: 22
+  })
+})
+
+it('Should verify first and last name are set', () => {
+  const user = {location: 'Betim', age: 22}
+  const res = utils.setName(user, 'Eduardo Faria')
+
+  expected(res).toInclude({
+    firstName: 'Eduardo',
+    lastName: 'Faria'
+  })
 })
