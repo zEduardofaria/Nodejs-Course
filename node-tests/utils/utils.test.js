@@ -2,31 +2,38 @@ const expect = require('expect')
 
 const utils = require('./utils')
 
-it('Should add two numbers', () => {
-  const res = utils.add(33, 11)
-
-  expect(res).toBe(44).toBeA('number')
-})
-
-it('Should async add two numbers', (done) => {
-  utils.asyncAdd(4, 3, (sum) => {
-    expect(sum).toBe(7).toBeA('number')
-    done()
+describe('Utils', () => {
+  describe('#add', () => {
+    it('Should add two numbers', () => {
+      const res = utils.add(33, 11)
+    
+      expect(res).toBe(44).toBeA('number')
+    })
+    
+    it('Should async add two numbers', (done) => {
+      utils.asyncAdd(4, 3, (sum) => {
+        expect(sum).toBe(7).toBeA('number')
+        done()
+      })
+    })
   })
-})
-
-it('Should square a number', () => {
-  const res = utils.square(3)
   
-  expect(res).toBe(9).toBeA('number')
-})
-
-it('Should async square a number', (done) => {
-  utils.squareAsync(3, (res) => {
-    expect(res).toBe(9).toBeA('number')
-    done()
+  describe('#square', () => {
+    it('Should square a number', () => {
+      const res = utils.square(3)
+      
+      expect(res).toBe(9).toBeA('number')
+    })
+    
+    it('Should async square a number', (done) => {
+      utils.squareAsync(3, (res) => {
+        expect(res).toBe(9).toBeA('number')
+        done()
+      })
+    })
   })
 })
+
 
 it('Should expect some values', () => {
   expect({
